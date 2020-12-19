@@ -102,7 +102,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: GET a Drink
       tags: []
       responses:
         '200':
@@ -149,7 +149,7 @@ paths:
       description: 'Get information on a drink including price, image, and stock level. Stock level represents how many of these drinks are in stock for Rotender Units in the Venue.'
   '/venues/{venueId}/orders':
     post:
-      summary: ''
+      summary: Create an Order
       operationId: post-orders
       responses:
         '200':
@@ -278,6 +278,20 @@ paths:
         in: path
         required: true
         description: ID of the Venue the Customer is purchasing from.
+    put:
+      summary: ''
+      operationId: put-venues-venueId-orders
+      responses:
+        '200':
+          description: OK
+      description: Update an existing Order to be poured.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+        description: ''
 components:
   schemas:
     User:
