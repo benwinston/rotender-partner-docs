@@ -345,8 +345,14 @@ components:
     Order:
       title: Order
       type: object
-      x-examples: {}
-      description: 'The Order will be created when a user orders a drink. There is a drink ID, Unit ID and Customer ID included.'
+      x-examples:
+        Rum and Coke Order:
+          id: '123456'
+          status: poured
+          drink_id: '123456'
+          unit_id: '5'
+          customer_id: '123456'
+      description: Submit an Order to Rotender when the user has paid for their Drink. An Order *has_one* Drink ID and *belongs_to* a Customer.
       properties:
         id:
           type: string
