@@ -153,7 +153,7 @@ paths:
                     ingredient_stock_level: high
                     imageUrl: image_url_in_s3_bucket
       operationId: get-drinks-drinkId
-      description: 'Get information on a drink including price, image, and stock level.'
+      description: 'Get information on a drink including price, image, and stock level. Stock level represents how many of these drinks are in stock for Rotender Units in the Venue.'
   '/venues/{venueId}/orders/':
     post:
       summary: ''
@@ -178,7 +178,7 @@ paths:
                 required:
                   - status
                   - unit_id
-      description: Create a new Order.
+      description: 'When a Customer has selected their Drink and paid, submit a new order with the customer''s name (first and last), and their drink Order. The returned response will include success/failure status of the Order (and, in the cuse of failure, a description), and the recommended Unit from which the Customer should have their Drink poured. If there are multiple Units in the venue, it is not mandatory that the Customer go to the Unit specified to retrieve their Drink, but they may find that the Drink is not stocked or Out of Stock in other Units.'
       requestBody:
         content:
           application/json:
@@ -306,7 +306,7 @@ components:
           type: string
           description: The ID of the Venue the Unit resides in
     Ingredient:
-      description: ''
+      description: 'An Ingredient can be combined with other Ingredients to compose a drink, and *belongs to many* Units.'
       type: object
       properties:
         name:
@@ -327,6 +327,7 @@ components:
           name: vodka
           imageURL: s3_bucket_url
           source: carousel
+      title: Ingredient
     Order:
       title: Order
       type: object
