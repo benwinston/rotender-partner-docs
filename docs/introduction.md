@@ -2,10 +2,10 @@
 tags: [00. Welcome]
 ---
 
-# Introduction
+# Rotender Partner API
 
-Studio is our next generation app for API design, modeling, and technical writing. 
-
-> A primary goal of Studio is to enrich, not replace, your existing workflows. It works offline, with folders and files on your computer, just like your favorite IDEs.
-
-Here is some of what it can do:
+Welcome to the Rotender Partner API. The purpose of this API is to allow Rotender partner companies to perform a number of functions, including:
+1. Displaying a menu of Drinks that are in stock and offered by Rotender.
+2. Accurately track the inventory across Rotender Units so that Out of Stock Drinks are never sold.
+3. After payment is processed, forward the Order to Rotender for fulfillment.
+4. Direct the Customer to the Rotender when the Order is received. In the case of larger Venues where multiple 
