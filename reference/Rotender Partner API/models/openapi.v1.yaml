@@ -210,7 +210,31 @@ paths:
                     first_name: Winter
                     last_name: Mute
                   drink_id: '123456'
-        description: ''
+          text/html:
+            schema:
+              description: ''
+              type: object
+              properties:
+                drink_id:
+                  type: string
+                  minLength: 1
+                customer_id:
+                  type: string
+                  minLength: 1
+                venue_id:
+                  type: string
+                  minLength: 1
+              required:
+                - drink_id
+                - customer_id
+                - venue_id
+            examples:
+              example-1:
+                value:
+                  drink_id: string
+                  customer_id: string
+                  venue_id: string
+        description: Post an Order
       parameters: []
     parameters:
       - schema:
@@ -358,6 +382,7 @@ components:
           drink_id: '123456'
           unit_id: '5'
           customer_id: '123456'
+          venue_id: '123456'
       description: Submit an Order to Rotender when the user has paid for their Drink. An Order *has_one* Drink ID and *belongs_to* a Customer.
       properties:
         id:
@@ -367,4 +392,6 @@ components:
         unit_id:
           type: string
         customer_id:
+          type: string
+        venue_id:
           type: string
