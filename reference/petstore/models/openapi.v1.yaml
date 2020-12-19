@@ -1,0 +1,343 @@
+openapi: 3.0.0
+info:
+  title: Rotender Partner API
+  version: '1.0'
+  contact:
+    name: Ben WInston
+    url: www.rotender.com
+    email: ben@rotender.com
+servers:
+  - url: dashboard.rotender.com
+paths:
+  'venues/{venueId}':
+    parameters:
+      - schema:
+          type: string
+        name: venueId
+        in: path
+        description: The ID of the venue you are querying.
+        required: true
+    get:
+      summary: Get Drink Menu for Venue
+      tags: []
+      responses:
+        '200':
+          description: Venue Found
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  id:
+                    type: string
+                    minLength: 1
+                  drinks:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          minLength: 1
+                        ingredients:
+                          type: array
+                          items:
+                            type: string
+                        name:
+                          type: string
+                          minLength: 1
+                        price:
+                          type: number
+                      required:
+                        - id
+                        - name
+                        - price
+                required:
+                  - id
+                  - drinks
+              examples:
+                'Get Venue ':
+                  value:
+                    id: '123456'
+                    drinks:
+                      - id: '123456'
+                        ingredients:
+                          - vodka
+                          - soda
+                        name: Vodka Soda
+                        price: 20
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+            multipart/form-data:
+              schema:
+                type: object
+                properties: {}
+            text/html:
+              schema:
+                type: object
+                properties: {}
+            application/postscript:
+              schema:
+                type: object
+                properties: {}
+        '404':
+          description: User Not Found
+      operationId: get-users-userId
+      description: Retrieve a Drink Menu for a given Venue.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+        description: Drink menu for venue
+  'venues/{venueId}/drinks/{drinkId}':
+    parameters:
+      - schema:
+          type: string
+        name: drinkId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: venueId
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  id:
+                    type: string
+                    minLength: 1
+                  ingredients:
+                    type: array
+                    items:
+                      required: []
+                      properties: {}
+                  price:
+                    type: number
+                  ingredient_stock_level:
+                    type: string
+                    minLength: 1
+                  imageUrl:
+                    type: string
+                    minLength: 1
+                required:
+                  - id
+                  - ingredients
+                  - price
+                  - ingredient_stock_level
+                  - imageUrl
+              examples:
+                Vodka Cranberry:
+                  value:
+                    id: '123456'
+                    ingredients:
+                      - Vodka
+                      - Cranberry
+                    price: 12.5
+                    ingredient_stock_level: high
+                    imageUrl: image_url_in_s3_bucket
+      operationId: get-drinks-drinkId
+      description: 'Get information on a drink including price, image, and stock level.'
+  'venues/{venueId}/orders/':
+    post:
+      summary: ''
+      operationId: post-orders
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  status:
+                    type: string
+                    minLength: 1
+                  unit_id:
+                    type: string
+                    minLength: 1
+                required:
+                  - status
+                  - unit_id
+      description: Create a new Order.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                customer_name:
+                  type: string
+                  minLength: 1
+                drink_id:
+                  type: string
+                  minLength: 1
+                hopps_customer_id:
+                  type: string
+                  minLength: 1
+              required:
+                - customer_name
+                - drink_id
+                - hopps_customer_id
+        description: ''
+    parameters: []
+components:
+  schemas:
+    User:
+      title: User
+      type: object
+      description: A User represents a Venue owner and *has* multiple Venues.
+      x-examples:
+        Partner Example:
+          id: 142
+          firstName: Rotender
+          lastName: Partner
+          email: contact@bestposever.com
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the given user.
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
+      required:
+        - id
+    Venue:
+      type: object
+      title: Venue
+      minProperties: 1
+      x-examples:
+        example-1:
+          id: MongoID
+      description: 'The Venue represents a physical location, *belongs to* a User and *has* multiple Units.'
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        user_id:
+          type: string
+    Drink:
+      title: Drink
+      type: object
+      description: 'Represents a Drink, which *has many* Ingredients.'
+      x-examples:
+        'Example: Vodka Cranberry':
+          id: '123456'
+          ingredients:
+            - Vodka
+            - Cranberry
+          price: 12.5
+          ingredient_stock_level: high
+          imageUrl: image_url_in_s3_bucket
+      properties:
+        id:
+          type: string
+        ingredients:
+          type: array
+          description: An array of ingredient names
+          items: {}
+        price:
+          type: number
+          description: The price charged for the drink.
+        ingredient_stock_level:
+          type: string
+          description: 'Retruns a string "oos", "low", "medium", "high" to communicate the Ingredient stock level across all the Units in the venue.'
+        imageUrl:
+          type: string
+    Unit:
+      title: Unit
+      type: object
+      description: 'A Unit represents an individual Rotender machine, has an inventory of Ingredients and *belongs to* a Venue.'
+      x-examples:
+        Unit 5:
+          id: '123456'
+          inventory:
+            - ingredient_id: '123456'
+              position_in_unit: 5
+              qty_in_stock: 22
+              name: vodka
+              base_price: '14.75'
+          venue_id: '123456'
+      properties:
+        id:
+          type: string
+        inventory:
+          type: array
+          description: 'An array of Objects of the form {ingredient_id: count: int, position_in_unit: int}'
+          items:
+            type: object
+            properties:
+              ingredient_id:
+                type: string
+              position_in_unit:
+                type: integer
+              qty_in_stock:
+                type: integer
+              name:
+                type: string
+              base_price:
+                type: number
+        venue_id:
+          type: string
+          description: The ID of the Venue the Unit resides in
+    Ingredient:
+      description: ''
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        imageURL:
+          type: string
+          minLength: 1
+        source:
+          type: string
+          minLength: 1
+      required:
+        - name
+        - imageURL
+        - source
+      x-examples:
+        Vodka:
+          name: vodka
+          imageURL: s3_bucket_url
+          source: carousel
+    Order:
+      title: Order
+      type: object
+      x-examples: {}
+      description: 'The Order will be created when a user orders a drink. There is a drink ID, Unit ID and Customer ID included.'
+      properties:
+        id:
+          type: string
+        drink_id:
+          type: string
+        unit_id:
+          type: string
+        customer_id:
+          type: string
