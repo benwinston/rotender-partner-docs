@@ -178,13 +178,17 @@ paths:
                   venue_id:
                     type: string
                     minLength: 1
-                required:
-                  - id
-                  - status
-                  - drink_id
-                  - unit_id
-                  - customer_id
-                  - venue_id
+                  order_total:
+                    type: number
+              examples:
+                example-1:
+                  value:
+                    id: string
+                    status: string
+                    drink_id: string
+                    unit_id: string
+                    customer_id: string
+                    venue_id: string
         '201':
           description: Created
           content:
