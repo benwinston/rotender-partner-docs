@@ -51,13 +51,6 @@ paths:
                           minLength: 1
                         price:
                           type: number
-                      required:
-                        - id
-                        - name
-                        - price
-                required:
-                  - id
-                  - drinks
               examples:
                 'Get Venue ':
                   value:
@@ -86,7 +79,7 @@ paths:
                 type: object
                 properties: {}
         '404':
-          description: User Not Found
+          description: Venue not found.
       operationId: get-users-userId
       description: Retrieve a Drink Menu for a given Venue.
       requestBody:
