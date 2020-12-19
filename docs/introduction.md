@@ -2,6 +2,6 @@
 tags: [00. Welcome]
 ---
 
-# Introduction
+# Intro
 
 Welcome to the Rotender Partner API.
