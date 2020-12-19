@@ -206,7 +206,7 @@ paths:
                 required:
                   - status
                   - unit_id
-      description: 'When a Customer has selected their Drink and paid, submit a new order with the customer''s name (first and last), and their drink Order. The returned response will include success/failure status of the Order (and, in the cuse of failure, a description), and the recommended Unit from which the Customer should have their Drink poured. If there are multiple Units in the venue, it is not mandatory that the Customer go to the Unit specified to retrieve their Drink, but they may find that the Drink is not stocked or Out of Stock in other Units.'
+      description: 'When a Customer has selected their Drink and paid, submit a new order with the customer''s name (first and last), and their drink Order. The returned response will include success/failure status of the Order (and, in the case of failure, a description), and the recommended Unit from which the Customer should have their Drink poured. If there are multiple Units in the venue, it is not mandatory that the Customer go to the Unit specified to retrieve their Drink, but they may find that the Drink is not stocked or Out of Stock in other Units.'
       requestBody:
         content:
           application/xml:
