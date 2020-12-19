@@ -147,7 +147,7 @@ paths:
                     imageUrl: image_url_in_s3_bucket
       operationId: get-drinks-drinkId
       description: 'Get information on a drink including price, image, and stock level. Stock level represents how many of these drinks are in stock for Rotender Units in the Venue.'
-  '/venues/{venueId}/orders/':
+  '/venues/{venueId}/orders':
     post:
       summary: ''
       operationId: post-orders
@@ -212,7 +212,13 @@ paths:
                   drink_id: '123456'
         description: ''
       parameters: []
-    parameters: []
+    parameters:
+      - schema:
+          type: string
+        name: venueId
+        in: path
+        required: true
+        description: ID of the Venue the Customer is purchasing from.
 components:
   schemas:
     User:
