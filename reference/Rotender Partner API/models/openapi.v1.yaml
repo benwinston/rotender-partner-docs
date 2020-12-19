@@ -174,25 +174,44 @@ paths:
       description: 'When a Customer has selected their Drink and paid, submit a new order with the customer''s name (first and last), and their drink Order. The returned response will include success/failure status of the Order (and, in the cuse of failure, a description), and the recommended Unit from which the Customer should have their Drink poured. If there are multiple Units in the venue, it is not mandatory that the Customer go to the Unit specified to retrieve their Drink, but they may find that the Drink is not stocked or Out of Stock in other Units.'
       requestBody:
         content:
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+          multipart/form-data:
+            schema:
+              type: object
+              properties: {}
           application/json:
             schema:
               description: ''
               type: object
               properties:
-                customer_name:
+                venue_id:
                   type: string
                   minLength: 1
+                customer:
+                  type: object
+                  properties:
+                    first_name:
+                      type: string
+                      minLength: 1
+                    last_name:
+                      type: string
+                      minLength: 1
                 drink_id:
                   type: string
                   minLength: 1
-                hopps_customer_id:
-                  type: string
-                  minLength: 1
-              required:
-                - customer_name
-                - drink_id
-                - hopps_customer_id
+            examples:
+              example-1:
+                value:
+                  venue_id: '123456'
+                  customer:
+                    first_name: Winter
+                    last_name: Mute
+                  drink_id: '123456'
         description: ''
+      parameters: []
     parameters: []
 components:
   schemas:
