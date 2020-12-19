@@ -224,8 +224,10 @@ components:
       title: Venue
       minProperties: 1
       x-examples:
-        example-1:
-          id: MongoID
+        Dirty Laundry:
+          name: Dirty Laundry
+          id: '123456'
+          user_id: '123456'
       description: 'The Venue represents a physical location, *belongs to* a User and *has* multiple Units.'
       properties:
         id:
