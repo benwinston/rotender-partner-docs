@@ -218,7 +218,7 @@ components:
     User:
       title: User
       type: object
-      description: A User represents a Venue owner and *has* multiple Venues.
+      description: A User represents a Venue owner and *has many* Venues.
       x-examples:
         Partner Example:
           id: 142
