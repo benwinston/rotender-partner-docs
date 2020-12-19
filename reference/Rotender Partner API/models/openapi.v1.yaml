@@ -9,7 +9,7 @@ info:
 servers:
   - url: dashboard.rotender.com
 paths:
-  'venues/{venueId}':
+  '/venues/{venueId}':
     parameters:
       - schema:
           type: string
@@ -96,7 +96,7 @@ paths:
               type: object
               properties: {}
         description: Drink menu for venue
-  'venues/{venueId}/drinks/{drinkId}':
+  '/venues/{venueId}/drinks/{drinkId}':
     parameters:
       - schema:
           type: string
@@ -154,7 +154,7 @@ paths:
                     imageUrl: image_url_in_s3_bucket
       operationId: get-drinks-drinkId
       description: 'Get information on a drink including price, image, and stock level.'
-  'venues/{venueId}/orders/':
+  '/venues/{venueId}/orders/':
     post:
       summary: ''
       operationId: post-orders
