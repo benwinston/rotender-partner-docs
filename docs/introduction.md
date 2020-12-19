@@ -7,11 +7,13 @@ tags: [00. Welcome]
 
 <h1>Rotender Partner API</h1>
 
-Welcome to the Rotender Partner API. The purpose of this API is to allow Rotender partners to perform a number of functions to serve customers, including:
+Welcome to the Rotender Partner API. The purpose of this API is to enable Rotender partners to provide their customers with automated drink service. 
+
+The Partner API includes endpoints for the following features:
 1. Displaying a menu of Drinks that are in stock and offered by Rotender.
-2. Accurately tracking the inventory across Rotender Units so that out of stock Drinks are never sold.
-3. After payment is processed, forwarding the Order to Rotender for fulfillment.
-4. Directing the Customer to the Rotender when the Order is received.
+2. Accurately tracking the inventory across Rotender Units in a given venue so that out of stock Drinks are never sold.
+3. Forwarding an Order to Rotender after payment is process.
+4. Confirming that a Customer is physically present at a Rotender device for drink fulfillment.
 
 <h1 style="margin-top:30px">Workflow</h1>
 
