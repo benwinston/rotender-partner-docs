@@ -9,7 +9,7 @@ info:
 servers:
   - url: dashboard.rotender.com
 paths:
-  'venues/{venueId}':
+  '/venues/{venueId}':
     parameters:
       - schema:
           type: string
@@ -96,7 +96,7 @@ paths:
               type: object
               properties: {}
         description: Drink menu for venue
-  'venues/{venueId}/drinks/{drinkId}':
+  '/venues/{venueId}/drinks/{drinkId}':
     parameters:
       - schema:
           type: string
@@ -125,9 +125,6 @@ paths:
                     minLength: 1
                   ingredients:
                     type: array
-                    items:
-                      required: []
-                      properties: {}
                   price:
                     type: number
                   ingredient_stock_level:
@@ -136,25 +133,17 @@ paths:
                   imageUrl:
                     type: string
                     minLength: 1
-                required:
-                  - id
-                  - ingredients
-                  - price
-                  - ingredient_stock_level
-                  - imageUrl
               examples:
                 Vodka Cranberry:
                   value:
                     id: '123456'
-                    ingredients:
-                      - Vodka
-                      - Cranberry
+                    ingredients: [Vodka, Cranberry]
                     price: 12.5
                     ingredient_stock_level: high
                     imageUrl: image_url_in_s3_bucket
       operationId: get-drinks-drinkId
       description: 'Get information on a drink including price, image, and stock level.'
-  'venues/{venueId}/orders/':
+  '/venues/{venueId}/orders/':
     post:
       summary: ''
       operationId: post-orders
@@ -200,7 +189,12 @@ paths:
                 - drink_id
                 - hopps_customer_id
         description: ''
-    parameters: []
+    parameters:
+      - schema:
+          type: string
+        name: venueId
+        in: path
+        required: true
 components:
   schemas:
     User:
