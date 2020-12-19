@@ -1,7 +1,5 @@
 description: 'The Order will be created when a user orders a drink. There is a drink ID, Unit ID and Customer ID included.'
 type: object
-x-tags:
-  - Orders
 properties:
   id:
     type: object
@@ -41,3 +39,5 @@ required:
   - unit_id
   - customer_id
 title: Order
+x-tags:
+  - Pets
