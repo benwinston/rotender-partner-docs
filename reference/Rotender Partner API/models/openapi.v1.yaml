@@ -154,6 +154,37 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  id:
+                    type: string
+                    minLength: 1
+                  status:
+                    type: string
+                    minLength: 1
+                  drink_id:
+                    type: string
+                    minLength: 1
+                  unit_id:
+                    type: string
+                    minLength: 1
+                  customer_id:
+                    type: string
+                    minLength: 1
+                  venue_id:
+                    type: string
+                    minLength: 1
+                required:
+                  - id
+                  - status
+                  - drink_id
+                  - unit_id
+                  - customer_id
+                  - venue_id
         '201':
           description: Created
           content:
