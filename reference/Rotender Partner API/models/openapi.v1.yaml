@@ -430,6 +430,7 @@ components:
           status: poured
           drink_id: '123456'
           unit_id: '5'
+          price: 10.5
           customer_id: '123456'
           venue_id: '123456'
       description: Submit an Order to Rotender when the user has paid for their Drink. An Order *has_one* Drink ID and *belongs_to* a Customer.
