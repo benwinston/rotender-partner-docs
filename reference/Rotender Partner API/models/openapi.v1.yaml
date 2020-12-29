@@ -444,3 +444,5 @@ components:
           type: string
         venue_id:
           type: string
+        price:
+          type: number
