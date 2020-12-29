@@ -315,7 +315,7 @@ paths:
             schema:
               type: object
               properties: {}
-        description: Update an Order with the "paid" or "code_entered" status.
+        description: 'Update an Order with the "paid" or "code_entered" status. With the "paid" status, do not include the "code" key/value pair, this is an udpate for Rotender''s records and to ensure that a drink is never poured before payment is processed. With the "code_entered" status, include the code entered by the customer.'
 components:
   schemas:
     User:
