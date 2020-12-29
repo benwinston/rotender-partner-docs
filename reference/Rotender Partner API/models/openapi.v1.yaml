@@ -289,9 +289,33 @@ paths:
         content:
           application/json:
             schema:
+              description: ''
+              type: object
+              properties:
+                order_id:
+                  type: string
+                  minLength: 1
+                status:
+                  type: string
+                code:
+                  type: string
+              required:
+                - order_id
+                - status
+            examples:
+              Paid status update:
+                value:
+                  order_id: '123456'
+                  status: paid
+          application/xml:
+            schema:
               type: object
               properties: {}
-        description: ''
+          multipart/form-data:
+            schema:
+              type: object
+              properties: {}
+        description: Update an Order with the "paid" or "code_entered" status.
 components:
   schemas:
     User:
@@ -430,7 +454,6 @@ components:
           status: poured
           drink_id: '123456'
           unit_id: '5'
-          price: 10.5
           customer_id: '123456'
           venue_id: '123456'
       description: Submit an Order to Rotender when the user has paid for their Drink. An Order *has_one* Drink ID and *belongs_to* a Customer.
