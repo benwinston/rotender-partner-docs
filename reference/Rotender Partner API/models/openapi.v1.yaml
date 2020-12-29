@@ -422,6 +422,8 @@ components:
         venue_id:
           type: string
           description: The ID of the Venue the Unit resides in
+        current_code:
+          type: string
     Ingredient:
       description: 'An Ingredient can be combined with other Ingredients to compose a drink, and *belongs to many* Units.'
       type: object
