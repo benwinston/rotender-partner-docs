@@ -450,6 +450,18 @@ components:
     Order:
       description: Represents and Order made by a Customer in a given venue.
       type: object
+      title: Order
+      x-examples:
+        Rum and Coke Order:
+          id: '123456'
+          statuses:
+            - name: paid
+              date: 'Tue Dec 29 2020 16:08:57 GMT-0800'
+          drink_id: '123456'
+          unit_id: '123456'
+          price: 10.5
+          customer_id: '123456'
+          venue_id: '123456'
       properties:
         id:
           type: string
@@ -459,9 +471,7 @@ components:
           uniqueItems: true
           minItems: 1
           items:
-            required:
-              - name
-              - date
+            type: object
             properties:
               name:
                 type: string
@@ -469,6 +479,9 @@ components:
               date:
                 type: string
                 minLength: 1
+            required:
+              - name
+              - date
         drink_id:
           type: string
           minLength: 1
@@ -491,4 +504,3 @@ components:
         - price
         - customer_id
         - venue_id
-      title: Order
