@@ -448,27 +448,47 @@ components:
           source: carousel
       title: Ingredient
     Order:
-      title: Order
+      description: Represents and Order made by a Customer in a given venue.
       type: object
-      x-examples:
-        Rum and Coke Order:
-          id: '123456'
-          status: poured
-          drink_id: '123456'
-          unit_id: '5'
-          customer_id: '123456'
-          venue_id: '123456'
-      description: Submit an Order to Rotender when the user has paid for their Drink. An Order *has_one* Drink ID and *belongs_to* a Customer.
       properties:
         id:
           type: string
+          minLength: 1
+        statuses:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            required:
+              - name
+              - date
+            properties:
+              name:
+                type: string
+                minLength: 1
+              date:
+                type: string
+                minLength: 1
         drink_id:
           type: string
+          minLength: 1
         unit_id:
           type: string
-        customer_id:
-          type: string
-        venue_id:
-          type: string
+          minLength: 1
         price:
           type: number
+        customer_id:
+          type: string
+          minLength: 1
+        venue_id:
+          type: string
+          minLength: 1
+      required:
+        - id
+        - statuses
+        - drink_id
+        - unit_id
+        - price
+        - customer_id
+        - venue_id
+      title: Order
