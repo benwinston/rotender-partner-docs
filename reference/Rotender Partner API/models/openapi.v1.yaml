@@ -424,6 +424,8 @@ components:
           description: The ID of the Venue the Unit resides in
         current_code:
           type: string
+        unitNumber:
+          type: number
     Ingredient:
       description: 'An Ingredient can be combined with other Ingredients to compose a drink, and *belongs to many* Units.'
       type: object
@@ -448,7 +450,7 @@ components:
           source: carousel
       title: Ingredient
     Order:
-      description: Represents and Order made by a Customer in a given venue.
+      description: Represent and Order made by a Customer in a given venue.
       type: object
       title: Order
       x-examples:
