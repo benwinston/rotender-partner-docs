@@ -359,14 +359,16 @@ components:
         user_id:
           type: string
         drinks:
-          type: object
-          properties:
-            price:
-              type: number
-            id:
-              type: string
-            name:
-              type: string
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              price:
+                type: number
+              name:
+                type: string
     Drink:
       title: Drink
       type: object
