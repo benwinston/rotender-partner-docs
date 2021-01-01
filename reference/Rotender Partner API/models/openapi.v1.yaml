@@ -358,6 +358,15 @@ components:
           type: string
         user_id:
           type: string
+        drinks:
+          type: object
+          properties:
+            price:
+              type: number
+            id:
+              type: string
+            name:
+              type: string
     Drink:
       title: Drink
       type: object
@@ -400,6 +409,7 @@ components:
               name: vodka
               base_price: '14.75'
           venue_id: '123456'
+          unitNumber: 5
       properties:
         id:
           type: string
