@@ -349,14 +349,16 @@ components:
         Dirty Laundry:
           name: Dirty Laundry
           id: '123456'
-          user_id: '123456'
+          userId: '123456'
+          drinks:
+            - id: '123456'
+              name: vodka soda
+              price: 10.5
       description: 'The Venue represents a physical location, *belongs to* a User and *has* multiple Units.'
       properties:
         id:
           type: string
         name:
-          type: string
-        user_id:
           type: string
         drinks:
           type: array
@@ -369,6 +371,10 @@ components:
                 type: number
               name:
                 type: string
+              '':
+                type: string
+        userId:
+          type: string
     Drink:
       title: Drink
       type: object
