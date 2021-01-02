@@ -361,18 +361,17 @@ components:
         name:
           type: string
         drinks:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              price:
-                type: number
-              name:
-                type: string
-              '':
-                type: string
+          type: object
+          properties:
+            id:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                price:
+                  type: string
         userId:
           type: string
     Drink:
