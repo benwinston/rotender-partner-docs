@@ -363,7 +363,7 @@ components:
         drinks:
           type: object
           properties:
-            id:
+            '{the_drink_id}':
               type: object
               properties:
                 id:
