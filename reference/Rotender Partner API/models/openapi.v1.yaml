@@ -446,6 +446,12 @@ components:
     Ingredient:
       description: 'An Ingredient can be combined with other Ingredients to compose a drink, and *belongs to many* Units.'
       type: object
+      x-examples:
+        Vodka:
+          name: vodka
+          imageURL: s3_bucket_url
+          source: carousel
+      title: Ingredient
       properties:
         name:
           type: string
@@ -456,16 +462,12 @@ components:
         source:
           type: string
           minLength: 1
+        venueId:
+          type: string
       required:
         - name
         - imageURL
         - source
-      x-examples:
-        Vodka:
-          name: vodka
-          imageURL: s3_bucket_url
-          source: carousel
-      title: Ingredient
     Order:
       description: Represent and Order made by a Customer in a given venue.
       type: object
