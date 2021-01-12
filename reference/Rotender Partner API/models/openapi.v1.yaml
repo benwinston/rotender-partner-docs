@@ -211,8 +211,26 @@ paths:
         content:
           application/xml:
             schema:
+              description: ''
               type: object
-              properties: {}
+              properties:
+                drink_id:
+                  type: string
+                  minLength: 1
+                customer_first:
+                  type: string
+                  minLength: 1
+                customer_last:
+                  type: string
+                  minLength: 1
+                venue_id:
+                  type: string
+                  minLength: 1
+              required:
+                - drink_id
+                - customer_first
+                - customer_last
+                - venue_id
           multipart/form-data:
             schema:
               type: object
