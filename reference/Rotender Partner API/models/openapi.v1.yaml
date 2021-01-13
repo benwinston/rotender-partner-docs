@@ -421,46 +421,67 @@ components:
         imageUrl:
           type: string
     Unit:
-      title: Unit
+      description: 'A single, physical Rotender Unit. Units *have one* Venue and a Venue *has many* Units.'
       type: object
-      description: 'A Unit represents an individual Rotender machine, has an inventory of Ingredients and *belongs to* a Venue.'
+      properties:
+        id:
+          type: string
+          minLength: 1
+        inventory:
+          type: object
+          properties:
+            '{theIngredientId}':
+              type: object
+              properties:
+                ingredientId:
+                  type: string
+                  minLength: 1
+                positionInUnit:
+                  type: number
+                qtyInStock:
+                  type: number
+                name:
+                  type: string
+                  minLength: 1
+                basePrice:
+                  type: string
+                  minLength: 1
+              required:
+                - ingredientId
+                - positionInUnit
+                - qtyInStock
+                - name
+                - basePrice
+          required:
+            - '{theIngredientId}'
+        venueId:
+          type: string
+          minLength: 1
+        unitNumber:
+          type: number
+        currentCode:
+          type: string
+          minLength: 1
+      required:
+        - id
+        - inventory
+        - venueId
+        - unitNumber
+        - currentCode
       x-examples:
         Unit 5:
           id: '123456'
           inventory:
-            - ingredient_id: '123456'
-              position_in_unit: 5
-              qty_in_stock: 22
+            '{theIngredientId}':
+              ingredientId: '123456'
+              positionInUnit: 5
+              qtyInStock: 22
               name: vodka
-              base_price: '14.75'
-          venue_id: '123456'
+              basePrice: '14.75'
+          venueId: '123456'
           unitNumber: 5
-      properties:
-        id:
-          type: string
-        inventory:
-          type: array
-          description: 'An array of Objects of the form {ingredient_id: count: int, position_in_unit: int}'
-          items:
-            type: object
-            properties:
-              ingredient_id:
-                type: string
-              position_in_unit:
-                type: integer
-              qty_in_stock:
-                type: integer
-              name:
-                type: string
-              base_price:
-                type: number
-        venue_id:
-          type: string
-          description: The ID of the Venue the Unit resides in
-        current_code:
-          type: string
-        unitNumber:
-          type: number
+          currentCode: '1111'
+      title: Unit
     Ingredient:
       description: 'An Ingredient can be combined with other Ingredients to compose a drink, and *belongs to many* Units.'
       type: object
