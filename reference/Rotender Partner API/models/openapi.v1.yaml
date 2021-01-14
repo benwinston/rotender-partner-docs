@@ -423,51 +423,6 @@ components:
     Unit:
       description: 'A single, physical Rotender Unit. Units *have one* Venue and a Venue *has many* Units.'
       type: object
-      properties:
-        id:
-          type: string
-          minLength: 1
-        inventory:
-          type: object
-          properties:
-            '{theIngredientId}':
-              type: object
-              properties:
-                ingredientId:
-                  type: string
-                  minLength: 1
-                positionInUnit:
-                  type: number
-                qtyInStock:
-                  type: number
-                name:
-                  type: string
-                  minLength: 1
-                basePrice:
-                  type: string
-                  minLength: 1
-              required:
-                - ingredientId
-                - positionInUnit
-                - qtyInStock
-                - name
-                - basePrice
-          required:
-            - '{theIngredientId}'
-        venueId:
-          type: string
-          minLength: 1
-        unitNumber:
-          type: number
-        currentCode:
-          type: string
-          minLength: 1
-      required:
-        - id
-        - inventory
-        - venueId
-        - unitNumber
-        - currentCode
       x-examples:
         Unit 5:
           id: '123456'
@@ -482,6 +437,53 @@ components:
           unitNumber: 5
           currentCode: '1111'
       title: Unit
+      properties:
+        id:
+          type: string
+          minLength: 1
+        inventory:
+          type: object
+          required:
+            - '{theIngredientId}'
+          properties:
+            '{theIngredientId}':
+              type: object
+              required:
+                - ingredientId
+                - positionInUnit
+                - qtyInStock
+                - name
+                - basePrice
+              properties:
+                ingredientId:
+                  type: string
+                  minLength: 1
+                positionInUnit:
+                  type: number
+                qtyInStock:
+                  type: number
+                name:
+                  type: string
+                  minLength: 1
+                basePrice:
+                  type: string
+                  minLength: 1
+                source:
+                  type: string
+        venueId:
+          type: string
+          minLength: 1
+        unitNumber:
+          type: number
+        currentCode:
+          type: string
+          minLength: 1
+      required:
+        - id
+        - inventory
+        - venueId
+        - unitNumber
+        - currentCode
     Ingredient:
       description: 'An Ingredient can be combined with other Ingredients to compose a drink, and *belongs to many* Units.'
       type: object
